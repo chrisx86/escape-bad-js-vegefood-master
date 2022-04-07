@@ -15,20 +15,20 @@ function renderData(_data) {
     <td>${i.交易量}</td></tr>`;
     str += content;
   });
-  return str;
+  table.innerHTML = str;
 }
 
 this.axios.get(url)
   .then((res) => {
     data = res.data.filter((a) => a.作物名稱);
-    table.innerHTML = renderData(data);
+    renderData(data);
   });
 
 function filterCategory(e) {
   if (e.target.nodeName === 'BUTTON') {
     category = e.target.dataset.category;
     const showData = data.filter((i) => i.種類代碼 === category);
-    table.innerHTML = renderData(showData);
+    renderData(showData);
   }
 }
 
